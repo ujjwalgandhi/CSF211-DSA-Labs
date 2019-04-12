@@ -1,0 +1,2 @@
+This is new sample text written in the file to be read.
+55

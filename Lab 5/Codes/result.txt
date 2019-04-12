@@ -1,0 +1,71 @@
+Time taken for the program to read instructions: 0.000028
+Customer 0:
+Card num: 1632991898581478
+Bank code: NPIYC
+Expiry date: 05/2021
+First name: qszxe
+Last Name: iltbk
+
+Customer 1:
+Card num: 2599585120934305
+Bank code: IUCZO
+Expiry date: 11/2026
+First name: irked
+Last Name: wrfua
+
+Customer 2:
+Card num: 4001116598433300
+Bank code: MWJER
+Expiry date: 07/2026
+First name: tkllp
+Last Name: ktosk
+
+Customer 3:
+Card num: 4127421547543709
+Bank code: HKCVK
+Expiry date: 05/2026
+First name: nfaqg
+Last Name: sqxer
+
+Customer 4:
+Card num: 5891669418701053
+Bank code: MWQNP
+Expiry date: 05/2033
+First name: bppqx
+Last Name: fkxsk
+
+Customer 5:
+Card num: 6144115684794523
+Bank code: ZEATL
+Expiry date: 10/2033
+First name: arnne
+Last Name: drrfd
+
+Customer 6:
+Card num: 6665038339577827
+Bank code: EXOZC
+Expiry date: 10/2026
+First name: hinzv
+Last Name: myfvv
+
+Customer 7:
+Card num: 6792274328459633
+Bank code: XRGSA
+Expiry date: 11/2038
+First name: ppwvd
+Last Name: icokm
+
+Customer 8:
+Card num: 8313515769001870
+Bank code: GRKLK
+Expiry date: 03/2023
+First name: eatcp
+Last Name: btlzg
+
+Customer 9:
+Card num: 8889215403512755
+Bank code: CAPCM
+Expiry date: 12/2027
+First name: tykno
+Last Name: spelf
+
