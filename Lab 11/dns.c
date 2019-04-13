@@ -57,7 +57,7 @@ NODE* newNode(NODE* parent, char* key){
     return new;
 }
 
-void *insertDomain(NODE *node, char *domain, char *ip){
+void insertDomain(NODE *node, char *domain, char *ip){
     
     char **domainArr = domainTokens(domain); //Returns the domain name as array
     int level = 0; //References the index of the domain array
@@ -67,6 +67,8 @@ void *insertDomain(NODE *node, char *domain, char *ip){
         if (findKeyInChildren(node, domainArr[level])){
             node = findKeyInChildren(node, domainArr[level]);
             level++;
+            if (level == countTokens(domain))
+                break;
         }
         else{
             //Creating a new child of the node if it has no child
@@ -95,14 +97,12 @@ void *insertDomain(NODE *node, char *domain, char *ip){
     }
 
     //Setting last node's child equal to the IP address
-    NODE* new = newNode(node, ip);
+    NODE *new = newNode(node, ip);
 }
 
-
-
-void readData(FILE* fp, NODE* root, int lines){ //lines refers to the number of lines being read
+//Reads data from the file into the tree
+void readData(FILE *fp, NODE *root, int lines){ //lines refers to the number of lines being read
     char domain[MAXLEN], ip[MAXLEN];
-    int tokens;
 
     for (int i=0; i<lines; i++){
         fscanf(fp, "%[a-z-.] %[0-255.]\n", domain, ip);
@@ -110,16 +110,39 @@ void readData(FILE* fp, NODE* root, int lines){ //lines refers to the number of 
     }
 }
 
-NODE* lookup(NODE* root, char* domain){
+void printData(NODE *root){
+    while (root){
+        printf("%s\n", (root->child)->key);
+        printData(root->child);
+        root = root->sibling;
+    }
+}
+
+void lookup(NODE *root, char *domain){
     if (root == NULL)
-        return root;
+        return;
 
-    char** domainArr = domainTokens(domain);
-    NODE* temp = root->child;
-    int level = 1;
-    while (temp){
-        if (!strcmp(temp->key, domain[level-1])){
+    char **domainArr = domainTokens(domain);
+    int level = 0;
+    NODE *temp = root;
+    char errorCode[MAXKEY] = ""; 
 
+    while (1){
+        if (findKeyInChildren(temp, domainArr[level])){
+            temp = findKeyInChildren(temp, domainArr[level]);
+            //strcat(errorCode);
+
+            level++;
+            if (level == countTokens(domain))
+                break;
         }
-    } 
+
+        else{
+            printf("The entered DNS does not exist\n");
+            //printf("Error code - %s\n", errorCode);
+            return;
+        }
+    }
+
+    printf("The IP address for this DNS is %s\n", (temp->child)->key);
 }

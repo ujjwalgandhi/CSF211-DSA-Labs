@@ -8,7 +8,7 @@ typedef struct AVL
 	int bal : 2;
 } AVL;
 
-AVL* find(AVL *root, int value){
+AVL *  find(AVL *root, int value){
 	if (value == root->val || !root)
 		return root;
 
@@ -17,7 +17,7 @@ AVL* find(AVL *root, int value){
 	return find(root->right, value);
 }
 
-AVL* newNode(int value){
+AVL *newNode(int value){
 	AVL* node = (AVL*)malloc(sizeof(AVL));
 	node->val = value;
 	node->right = node->left = NULL;
@@ -25,7 +25,7 @@ AVL* newNode(int value){
 	return node;
 }
 
-void add(AVL *root, int value){
+AVL *add(AVL *root, int value){
 	if (!root)
 		return newNode(value);
 

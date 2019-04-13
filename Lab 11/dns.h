@@ -10,8 +10,10 @@ typedef struct node{
 } NODE;
 
 int countTokens(char* string);
-char** domainTokens(char* domain);
-NODE* findKeyInChildren(NODE* node, char* key);
-void *insertDomain(NODE *node, char *domain, char *ip);
+char **domainTokens(char* domain);
+NODE *findKeyInChildren(NODE* node, char* key);
+NODE* newNode(NODE* parent, char* key);
+void insertDomain(NODE *node, char *domain, char *ip);
 void readData(FILE* fp, NODE* root, int lines);
-NODE* lookup(NODE* root, char* word);
+void printData(NODE *root);
+void lookup(NODE* root, char* word);

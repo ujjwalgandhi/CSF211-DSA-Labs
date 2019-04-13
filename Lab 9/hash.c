@@ -1,8 +1,4 @@
-#include<stdio.h>
-#include <stdlib.h>
-#include<string.h>
-#define MAX 100
-int num = 0;
+#include "hash.h"
 
 int hashFunc(char *str, int base, int size){
 	int asc = 0;	
@@ -12,7 +8,7 @@ int hashFunc(char *str, int base, int size){
 	return ((asc%base)%size);
 }
 
-int countCol(char *arrStr[], int base, int size){
+int countCol(char **arrStr, int base, int size){
 	int count = 0;
 	int hash[size];
 	for (int i=0; i<size; i++){
@@ -27,8 +23,9 @@ int countCol(char *arrStr[], int base, int size){
 	return count;
 }
 
-char** parse(char* filename){
-	FILE *file = fopen(filename, "r");
+char **parse(char *filename){
+	FILE *file = NULL;
+	file = fopen(filename, "r");
 
 	if (!file){
 			printf("Unable to open the file\n");
@@ -69,14 +66,33 @@ char** parse(char* filename){
 	}
 
 	printf("There are %d word(s)\n", num);
+	fclose(file);
 	return book;
 }
 
-int main(){
-	char **book = parse("aliceinwonderland.txt");
-	for (int i=0; i<num; i++)
-		printf("%s\n", book[i]);
-	printf("There are %d word(s)\n", num);
+int bestHash(){
+	int table[3] = {5000, 50000, 500000};
+	int **base = (int*)malloc(3*sizeof(int*));
+	for (int i=0; i<3; i++){
+		base[i] = (int)malloc(6*sizeof(int));
+		for (int j=0; j<6; j++){
+			base[i][j] = table[i]+1;
+		}
+	}
+}
 
-	return 0;
+TABLE *createTable(){
+	int tableSize = 5000;
+	TABLE *hashTable = (TABLE*)malloc(sizeof(TABLE)*tableSize);
+
+	for (int i=0; i<tableSize-1; i++){
+		hashTable[i].next = &(hashTable[i+1]);
+	}
+	hashTable[tableSize-1].next = NULL;
+
+	return hashTable;
+}
+
+TABLE *insert(TABLE *hashTable, char **words, int index){
+	
 }

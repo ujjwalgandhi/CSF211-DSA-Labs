@@ -2,20 +2,20 @@
 
 int main(int argc, char const *argv[])
 {
-    FILE* fp = NULL;
-    fp = fopen(argv[0], "r");
+    FILE *fp = NULL;
+    fp = fopen(argv[1], "r");
     if (!fp){
         printf("Error opening the file\n");
         exit(-1);
     }
 
     //Creating the root node for the tree
-    NODE* root;
+    NODE* root = (NODE*)malloc(sizeof(NODE));
     root->parent = root->sibling = root->child = NULL;
     strcpy(root->key, "");
 
     int func, readNum;
-    char searchKey[MAXKEY];
+    char searchKey[MAXLEN];
     while(!feof(fp)){
         fscanf(fp, "%d ", &func);
         
